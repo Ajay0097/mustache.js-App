@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mustache.js</title>
+</head>
+
+
+
+
+<body>
+<div class="container-fluid">
+    <div class="bg-dark p-5">
+        <div class="Header text-center text-info" id="header-otp">
+    </div>
+        
+    </div>
+    <div class="text-center mt-5">
+      <button id="btn" class="btn btn-success">Click Me</button>
+    </div>
+    <div id="app">
+        
+        </div>
+        <div class="row mt-5" id="card-Content">
+            
+        </div>
+</div>
+
+
+
+<script>
+var data = 
+{
+    name:"Ajay",
+    Occupation: "Front-End Developer",
+    header_data:"Mustache",
+    card_title:"Speacial Card",
+    card_Details:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quasilabore consectetur minus voluptatem alias, incidunt necessitatibus culpa! Animi, dolorum?",
+    card_action:"http://hire----it.000webhostapp.com/"
+     
+
+}
+$(document).ready(function(){
+$('#btn').click(function(){
+$.get('Template.html',function(templates){
+var template = $(templates).filter('#Template-1').html();
+$('#app').append(Mustache.render(template,data));
+$('#btn').attr("disabled",true);
+
+})
+})
+});
+
+$(document).ready(function(){
+    $.get('Template.html',function(templates){
+        var template_2 = $(templates).filter('#Template-2').html();
+        $('#header-otp').append(Mustache.render(template_2,data))
+    })
+});
+$(document).ready(function(){
+$.get('Template.html',function(templates){
+    var template_3 = $(templates).filter('#Template-3').html();
+    $('#card-Content').append(Mustache.render(template_3,data));
+})
+});
+
+
+</script>
+<script type="text/javascript" src="Mustache.js"></script>
+</body>
+</html>
